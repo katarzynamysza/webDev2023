@@ -21,11 +21,10 @@
 
   & .contact_form {
     max-width: 54rem;
-  }
+    text-align: justify;
 
-  & .field_wrap {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    & input:first-of-type {
+      margin-right: 3rem;
+    }
   }
 }

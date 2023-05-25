@@ -13,14 +13,42 @@ const Contact = () => {
     message: '',
   });
 
+  const placeholders = [
+    'First Name',
+    'Last Name',
+    'Phone Number',
+    'What Service are you interested in?',
+  ];
+
   const handleChange = e => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    if (e.target.name === 'phone') {
+      const numericValue = e.target.value.replace(/\D/g, '');
+      setFormData(prev => ({
+        ...prev,
+        [e.target.name]: numericValue.slice(0, 12),
+      }));
+    } else
+      setFormData(prev => ({
+        ...prev,
+        [e.target.name]: e.target.value.slice(0, 50),
+      }));
   };
 
   const handleSubmit = e => {
     e.preventDefault();
     //submit form func
   };
+
+  const mappedInputs = Object.keys(formData).map((el, idx) => (
+    <FormInput
+      key={el}
+      name={el}
+      style={idx > 1 && 'full'}
+      value={formData[el]}
+      onChange={e => handleChange(e)}
+      placeholder={placeholders[idx]}
+    />
+  ));
 
   return (
     <div className='contact'>
@@ -32,47 +60,8 @@ const Contact = () => {
             team will get back to you within 24 hours
           </Text>
         </div>
-        <form className='contact_form' action=''>
-          <div className='field_wrap'>
-            <FormInput
-              type='text'
-              name='firstName'
-              value={formData.firstName}
-              onChange={e => handleChange(e)}
-              placeholder='First Name'
-              required={true}
-              disabled={false}
-            />
-            <FormInput
-              type='text'
-              name='lastName'
-              value={formData.lastName}
-              onChange={e => handleChange(e)}
-              placeholder='Last Name'
-              required={true}
-              disabled={false}
-            />
-          </div>
-          <FormInput
-            type='text'
-            name='phone'
-            style='full'
-            value={formData.phone}
-            onChange={e => handleChange(e)}
-            placeholder='Phone Number'
-            required={true}
-            disabled={false}
-          />
-          <FormInput
-            type='text'
-            name='message'
-            style='full'
-            value={formData.message}
-            onChange={e => handleChange(e)}
-            placeholder='What Service are you interested in?'
-            required={true}
-            disabled={false}
-          />
+        <form className='contact_form'>
+          {mappedInputs}
           <Button
             name='submit'
             buttonType='primary'
