@@ -1,15 +1,16 @@
 .formInput {
   max-width: 100%;
-  display: block;
-  border-radius: .6rem;
+  display: flex;
+  border-radius: 0.6rem;
   height: 6rem;
   border: 1px solid #333;
   padding: 2rem 3rem;
   font-size: 1.6rem;
-  margin: 2.4rem 0;
+  margin-bottom: 2.4rem;
 
   &::placeholder {
     color: #132743;
+    opacity: 50%;
   }
 }
 

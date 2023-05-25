@@ -1,3 +1,31 @@
 .contact {
-  height: 30rem;
+  min-height: 30rem;
+  display: flex;
+  justify-content: center;
+
+  & .container {
+    max-width: 111rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 14rem 0;
+  }
+
+  & .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 69rem;
+    padding-right: 15rem;
+    height: 45%;
+  }
+
+  & .contact_form {
+    max-width: 54rem;
+  }
+
+  & .field_wrap {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
 }

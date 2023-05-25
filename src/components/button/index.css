@@ -1,0 +1,40 @@
+.button {
+  background: none;
+  border: none;
+  text-align: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #ed4c5c;
+
+  /* it's generally not a good practice to put links within buttons,
+this is an option that takes into consideration the task's requirements
+to let the buttons be reusable in "Features" section(maybe "Read more"
+could be a button that expands the div containing the text and replace the <a>
+element completely, in that case basic .button style should be just enough :) )
+
+alternatively, styles for different buttons could be implemented in a similar manner
+(for example icon buttons in CTA section) to avoid too much inline styling and also
+juggling too many classes within the component itself */
+  &[button-type='link'] a {
+    color: #ed4c5c;
+    text-decoration: none;
+  }
+
+  &[button-type='secondary'],
+  &[button-type='primary'] {
+    padding: 2rem 3rem;
+    min-width: 16rem;
+    font-size: 1.4rem;
+    border-radius: 6px;
+  }
+
+  &[button-type='primary'] {
+    background-color: #ed4c5c;
+    color: #fff;
+  }
+
+  &[button-type='secondary'] {
+    background-color: #fff;
+    color: #ed4c5c;
+  }
+}
